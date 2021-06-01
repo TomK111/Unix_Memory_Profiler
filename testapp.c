@@ -67,7 +67,6 @@ main(int argc, char **argv){
     student_t *next = NULL;
     for( ; first; first = next){
         next = first->next;
-        if(1 || i%4 == 0)
         xfree(first);
         i++;
     }
