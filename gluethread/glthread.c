@@ -5,15 +5,13 @@
 #include "glthread.h"
 #include <stdlib.h>
 
-void
-init_glthread(glthread_t *glthread){
+void init_glthread(glthread_t *glthread){
 
     glthread->left = NULL;
     glthread->right = NULL;
 }
 
-void
-glthread_add_next(glthread_t *curr_glthread, glthread_t *new_glthread){
+void glthread_add_next(glthread_t *curr_glthread, glthread_t *new_glthread){
 
     if(!curr_glthread->right){
         curr_glthread->right = new_glthread;
@@ -28,8 +26,7 @@ glthread_add_next(glthread_t *curr_glthread, glthread_t *new_glthread){
     temp->left = new_glthread;
 }
 
-void
-glthread_add_before(glthread_t *curr_glthread, glthread_t *new_glthread){
+void glthread_add_before(glthread_t *curr_glthread, glthread_t *new_glthread){
 
     if(!curr_glthread->left){
         new_glthread->left = NULL;
@@ -45,8 +42,7 @@ glthread_add_before(glthread_t *curr_glthread, glthread_t *new_glthread){
     curr_glthread->left = new_glthread;
 }
 
-void
-remove_glthread(glthread_t *curr_glthread){
+void remove_glthread(glthread_t *curr_glthread){
 
     if(!curr_glthread->left){
         if(curr_glthread->right){
@@ -68,8 +64,7 @@ remove_glthread(glthread_t *curr_glthread){
     curr_glthread->right = 0;
 }
 
-void
-delete_glthread_list(glthread_t *base_glthread){
+void delete_glthread_list(glthread_t *base_glthread){
 
     glthread_t *glthreadptr = NULL;
 
@@ -78,8 +73,7 @@ delete_glthread_list(glthread_t *base_glthread){
     } ITERATE_GLTHREAD_END(base_glthread, glthreadptr);
 }
 
-void
-glthread_add_last(glthread_t *base_glthread, glthread_t *new_glthread){
+void glthread_add_last(glthread_t *base_glthread, glthread_t *new_glthread){
 
     glthread_t *glthreadptr = NULL,
             *prevglthreadptr = NULL;
@@ -94,8 +88,7 @@ glthread_add_last(glthread_t *base_glthread, glthread_t *new_glthread){
         glthread_add_next(base_glthread, new_glthread);
 }
 
-unsigned int
-get_glthread_list_count(glthread_t *base_glthread){
+unsigned int get_glthread_list_count(glthread_t *base_glthread){
 
     unsigned int count = 0;
     glthread_t *glthreadptr = NULL;
@@ -107,8 +100,7 @@ get_glthread_list_count(glthread_t *base_glthread){
 }
 
 
-void
-glthread_priority_insert(glthread_t *base_glthread,
+void glthread_priority_insert(glthread_t *base_glthread,
                          glthread_t *glthread,
                          int (*comp_fn)(void *, void *),
                          int offset){
@@ -160,8 +152,7 @@ glthread_priority_insert(glthread_t *base_glthread,
 }
 
 #if 0
-void *
-gl_thread_search(glthread_t *base_glthread,
+void * gl_thread_search(glthread_t *base_glthread,
                  void *(*thread_to_struct_fn)(glthread_t *),
                  void *key,
                  int (*comparison_fn)(void *, void *)){
