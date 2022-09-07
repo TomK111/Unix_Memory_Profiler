@@ -1,4 +1,4 @@
-# Heap_Memory_Manager
+# Unix Memory Profiler
 
 This is a Heap Memory Manager built in C for Unix-based Operating Systems. 
 
